@@ -19,10 +19,12 @@ namespace PF2Easy
     {
         static string cmd;
         int budget = 0;
+        int spent = 0;
         int difficulty = 0;
+        int prevthreat = 0;
         int threat = 0;
         int avglevel = 0;
-        int selectedXPVal = 0;
+        //int selectedXPVal = 0;
 
         List<Creature> encounter;
         List<Dupes> dupes;
@@ -36,11 +38,16 @@ namespace PF2Easy
 
         private void InitializeStuff()
         {
+            budget = 0;
+            spent = 0;
+            avglevel = (int)numericUpDown2.Value;
             webBrowser1.ScriptErrorsSuppressed = true;
             comboBoxSLevel.SelectedIndex = 0;
             comboBox1.SelectedIndex = 2;
             numericUpDown3.Value = 4;
             encounter = new List<Creature>();
+            dupes = new List<Dupes>();
+            listBox_Encounter.Items.Clear();
             try
             {
                 Uri u = new Uri(dataGridViewCreatures.Rows[0].Cells[6].Value.ToString());
@@ -50,6 +57,7 @@ namespace PF2Easy
             {
                 string msg = er.ToString();
             }
+            UpdateBudget();
         }
 
         private void CreateConnection()
@@ -151,25 +159,40 @@ namespace PF2Easy
 
         private void UpdateBudget()
         {
+            int newBudget = 0;
             switch (threat)
             {
                 case 40:
-                    budget = threat + (10 * difficulty);
+                    newBudget = threat + (10 * difficulty);
                     break;
                 case 60:
-                    budget = threat + (15 * difficulty);
+                    newBudget = threat + (15 * difficulty);
                     break;
                 case 80:
-                    budget = threat + (20 * difficulty);
+                    newBudget = threat + (20 * difficulty);
                     break;
                 case 120:
-                    budget = threat + (30 * difficulty);
+                    newBudget = threat + (30 * difficulty);
                     break;
                 case 160:
-                    budget = threat + (40 * difficulty);
+                    newBudget = threat + (40 * difficulty);
                     break;
             }
-            textBoxBudget.Text = budget.ToString();
+            //if (prevthreat > threat)
+            //{
+            //    //budget -= newBudget;
+            //}
+            //else if (prevthreat < threat)
+            //{
+            //    //budget += newBudget;
+            //}
+            budget = (newBudget - spent);
+
+            if (threat != -1)
+                textBoxBudget.Text = budget.ToString();
+            else
+                textBoxBudget.Text = "infinite";
+
         }
 
         private void comboBoxLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -179,6 +202,7 @@ namespace PF2Easy
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //difficulty/threat
         {
+            prevthreat = threat;
             switch (comboBox1.SelectedItem.ToString())
             {
                 case "Trivial":
@@ -195,6 +219,9 @@ namespace PF2Easy
                     break;
                 case "Extreme":
                     threat = 160;
+                    break;
+                case "Custom":
+                    threat = -1;
                     break;
                 default:
                     threat = 0;
@@ -246,8 +273,24 @@ namespace PF2Easy
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            avglevel = (int)numericUpDown2.Value;
-            UpdateBudget();
+            if (encounter.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Changing party level will reset the encounter!\nAre you sure?", "Confirmation", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    avglevel = (int)numericUpDown2.Value;
+                    InitializeStuff();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+            else
+            {
+                avglevel = (int)numericUpDown2.Value;
+                UpdateBudget();
+            }
         }
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
@@ -257,7 +300,7 @@ namespace PF2Easy
 
         private void CheckSearchParameters()
         {
-
+            //Calculate the possible monster choices based on xp value remaining.
         }
 
         private void button2_Click(object sender, EventArgs e)//Search
@@ -323,6 +366,165 @@ namespace PF2Easy
             PopulateDataGrid(true);
         }
 
+        private bool CalculateDifficulty(Creature c)
+        {
+            if (threat == -1) //allow any if custom
+            {
+                return true;
+            }
+            int scalar = c.LEVEL - avglevel;
+            if (scalar < -4)
+            {
+                return false;
+            }
+            else if (scalar > 4)
+            {
+                return false;
+            }
+
+            if (scalar == -4)
+            {
+                if (budget >= 10)
+                {
+                    budget -= 10;
+                    spent += 10;
+                    return true;
+                }
+            }
+            else if (scalar == -3)
+            {
+                if (budget >= 15)
+                {
+                    budget -= 15;
+                    spent += 15;
+                    return true;
+                }
+            }
+            else if (scalar == -2)
+            {
+                if (budget >= 20)
+                {
+                    budget -= 20;
+                    spent += 20;
+                    return true;
+                }
+            }
+            else if (scalar == -1)
+            {
+                if (budget >= 30)
+                {
+                    budget -= 30;
+                    spent += 30;
+                    return true;
+                }
+            }
+            else if (scalar == 0)
+            {
+                if (budget >= 40)
+                {
+                    budget -= 40;
+                    spent += 40;
+                    return true;
+                }
+            }
+            else if (scalar == 1)
+            {
+                if (budget >= 60)
+                {
+                    budget -= 60;
+                    spent += 60;
+                    return true;
+                }
+            }
+            else if (scalar == 2)
+            {
+                if (budget >= 80)
+                {
+                    budget -= 80;
+                    spent += 80;
+                    return true;
+                }
+            }
+            else if (scalar == 3)
+            {
+                if (budget >= 120)
+                {
+                    budget -= 120;
+                    spent += 120;
+                    return true;
+                }
+            }
+            else if (scalar == 4)
+            {
+                if (budget >= 160)
+                {
+                    budget -= 160;
+                    spent += 160;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void Refund(Creature c)
+        {
+            if (threat != -1) //allow any if custom
+            {
+                int scalar = avglevel - c.LEVEL;
+
+                if (scalar == -4)
+                {
+                    budget += 10;
+                    spent -= 10;
+                }
+                else if (scalar == -3)
+                {
+                    budget += 15;
+                    spent -= 15;
+                }
+                else if (scalar == -2)
+                {
+                    budget += 20;
+                    spent -= 20;
+                }
+                else if (scalar == -1)
+                {
+                    budget += 30;
+                    spent -= 30;
+                }
+                else if (scalar == 0)
+                {
+                    budget += 40;
+                    spent -= 40;
+                }
+                else if (scalar == 1)
+                {
+                    budget += 60;
+                    spent -= 60;
+                }
+                else if (scalar == 2)
+                {
+                    budget += 80;
+                    spent -= 80;
+                }
+                else if (scalar == 3)
+                {
+                    budget += 120;
+                    spent -= 120;
+                }
+                else if (scalar == 4)
+                {
+                    budget += 160;
+                    spent -= 160;
+                }
+                textBoxBudget.Text = budget.ToString();
+            }
+            else
+            {
+                textBoxBudget.Text = "infinite";
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)//Add to Encounter
         {
             Creature creature = new Creature();
@@ -333,75 +535,87 @@ namespace PF2Easy
             creature.TYPE = dataGridViewCreatures.Rows[dataGridViewCreatures.SelectedCells[0].RowIndex].Cells[4].Value.ToString();
             creature.SIZE = dataGridViewCreatures.Rows[dataGridViewCreatures.SelectedCells[0].RowIndex].Cells[5].Value.ToString();
             creature.URL = dataGridViewCreatures.Rows[dataGridViewCreatures.SelectedCells[0].RowIndex].Cells[6].Value.ToString();
-            encounter.Add(creature);
-
-
-            listBox_Encounter.Items.Clear();
-
-            dupes = new List<Dupes>();
-
-            for (int i = 0; i < encounter.Count; i++)
+            if (CalculateDifficulty(creature))
             {
+                encounter.Add(creature);
 
-                if (dupes.Count == 0)
-                {
-                    Dupes dupe = new Dupes();
-                    dupe.INDEX = new List<int>();
-                    dupe.NAME = encounter[i].NAME;
-                    dupe.COUNT = 0;
-                    //dupe.INDEX.Add(i);
-                    dupe.URL = encounter[i].URL;
-                    dupes.Add(dupe);
-                }
 
-                bool d = false;
-                int index = 0;
-                for (int j = 0; j < dupes.Count; j++)
+                listBox_Encounter.Items.Clear();
+
+                dupes = new List<Dupes>();
+
+                for (int i = 0; i < encounter.Count; i++)
                 {
 
-                    if (dupes[j].NAME == encounter[i].NAME)
+                    if (dupes.Count == 0)
                     {
-                        d = true;
-                        index = j;
-                        break;
+                        Dupes dupe = new Dupes();
+                        dupe.INDEX = new List<int>();
+                        dupe.NAME = encounter[i].NAME;
+                        dupe.COUNT = 0;
+                        //dupe.INDEX.Add(i);
+                        dupe.URL = encounter[i].URL;
+                        dupes.Add(dupe);
                     }
+
+                    bool d = false;
+                    int index = 0;
+                    for (int j = 0; j < dupes.Count; j++)
+                    {
+
+                        if (dupes[j].NAME == encounter[i].NAME)
+                        {
+                            d = true;
+                            index = j;
+                            break;
+                        }
+                    }
+
+                    if (!d)
+                    {
+                        Dupes temp = new Dupes();
+                        temp.INDEX = new List<int>();
+                        temp.NAME = encounter[i].NAME;
+                        temp.COUNT = 1;
+                        temp.INDEX.Add(i);
+                        temp.URL = encounter[i].URL;
+                        dupes.Add(temp);
+                    }
+                    else
+                    {
+                        Dupes temp = new Dupes(dupes[index]);
+                        temp.COUNT++;
+                        temp.INDEX.Add(i);
+                        dupes[index] = temp;
+                    }
+
+
+                    //if(!dupes.Contains(dupe))
+                    //{
+                    //    dupes.Add(dupe);
+                    //}
+                    //else
+                    //{
+                    //    Dupes temp = new Dupes(dupes[dupes.IndexOf(dupe)]);
+                    //    temp.COUNT++;
+                    //    dupes[dupes.IndexOf(dupe)] = temp;
+                    //}
                 }
 
-                if (!d)
+                //write encounter to listBox_Encounter
+                foreach (Dupes dupe in dupes)
                 {
-                    Dupes temp = new Dupes();
-                    temp.INDEX = new List<int>();
-                    temp.NAME = encounter[i].NAME;
-                    temp.COUNT = 1;
-                    temp.INDEX.Add(i);
-                    temp.URL = encounter[i].URL;
-                    dupes.Add(temp);
+                    listBox_Encounter.Items.Add(dupe.NAME + " x" + dupe.COUNT);
                 }
+                if (threat != -1)
+                    textBoxBudget.Text = budget.ToString();
                 else
-                {
-                    Dupes temp = new Dupes(dupes[index]);
-                    temp.COUNT++;
-                    temp.INDEX.Add(i);
-                    dupes[index] = temp;
-                }
+                    textBoxBudget.Text = "infinite";
 
-
-                //if(!dupes.Contains(dupe))
-                //{
-                //    dupes.Add(dupe);
-                //}
-                //else
-                //{
-                //    Dupes temp = new Dupes(dupes[dupes.IndexOf(dupe)]);
-                //    temp.COUNT++;
-                //    dupes[dupes.IndexOf(dupe)] = temp;
-                //}
             }
-
-            //write encounter to listBox_Encounter
-            foreach (Dupes dupe in dupes)
+            else
             {
-                listBox_Encounter.Items.Add(dupe.NAME + " x" + dupe.COUNT);
+
             }
         }
 
@@ -409,6 +623,7 @@ namespace PF2Easy
         {
             int selectedItemIndex = listBox_Encounter.SelectedIndex;
             int index = 0;
+            Creature remove;
             try
             {
 
@@ -425,6 +640,7 @@ namespace PF2Easy
                 {
                     temp.COUNT--;
                     dupes[index] = temp;
+                    remove = encounter[dupes[index].INDEX[dupes[index].INDEX.Count - 1] - 1];
                     encounter.RemoveAt(dupes[index].INDEX[dupes[index].INDEX.Count - 1] - 1);
                     dupes[index].INDEX.RemoveAt(dupes[index].INDEX.Count - 1);
                     for (int i = 0; i < dupes.Count; i++)
@@ -445,9 +661,15 @@ namespace PF2Easy
                 else
                 {
                     if (dupes.Count > 1)
+                    {
+                        remove = encounter[dupes[index].INDEX[dupes[index].INDEX.Count - 1]];
                         encounter.RemoveAt(dupes[index].INDEX[dupes[index].INDEX.Count - 1]);
+                    }
                     else
+                    {
+                        remove = encounter[0];
                         encounter.RemoveAt(0);
+                    }
                     //encounter.RemoveAt(dupes[index].INDEX[dupes[index].INDEX.Count - 1]-1);
 
                     dupes.RemoveAt(index);
@@ -478,8 +700,11 @@ namespace PF2Easy
                     listBox_Encounter.SelectedIndex = selectedItemIndex;
                 else
                 {
-                    listBox_Encounter.SelectedIndex = selectedItemIndex -1;
+                    listBox_Encounter.SelectedIndex = selectedItemIndex - 1;
                 }
+
+                //refund
+                Refund(remove);
 
             }
             catch (Exception e2)
