@@ -35,37 +35,52 @@ namespace PF2Easy
 
         public Form1()
         {
-            InitializeComponent();
-            PopulateDataGrid(false);
-            InitializeStuff();
+            try
+            {
+                InitializeComponent();
+                PopulateDataGrid(false);
+                InitializeStuff();
+            }
+            catch(Exception estart)
+            {
+                MessageBox.Show(estart.Message);
+            }
         }
 
         private void InitializeStuff()
         {
-            budget = 0;
-            spent = 0;
-            avglevel = (int)numericUpDown2.Value;
-            webBrowser1.ScriptErrorsSuppressed = true;
-            comboBoxSLevel.SelectedIndex = 0;
-            comboBox1.SelectedIndex = 2;
-            difficultyIndex = comboBox1.SelectedIndex;
-            numericUpDown3.Value = 4;
-            encounter = new List<Creature>();
-            dupes = new List<Dupes>();
-            listBox_Encounter.Items.Clear();
             try
             {
-                Uri u = new Uri(dataGridViewCreatures.Rows[0].Cells[6].Value.ToString());
-                webBrowser1.Url = u;
+
+                budget = 0;
+                spent = 0;
+                avglevel = (int)numericUpDown2.Value;
+                webBrowser1.ScriptErrorsSuppressed = true;
+                comboBoxSLevel.SelectedIndex = 0;
+                comboBox1.SelectedIndex = 2;
+                difficultyIndex = comboBox1.SelectedIndex;
+                numericUpDown3.Value = 4;
+                encounter = new List<Creature>();
+                dupes = new List<Dupes>();
+                listBox_Encounter.Items.Clear();
+                try
+                {
+                    Uri u = new Uri(dataGridViewCreatures.Rows[0].Cells[6].Value.ToString());
+                    webBrowser1.Url = u;
+                }
+                catch (Exception er)
+                {
+                    string msg = er.ToString();
+                }
+                UpdateBudget();
+                CheckSearchParameters();
+                dataGridViewCreatures.Sort(dataGridViewCreatures.Columns[sortCol], ascending);
+                toolStripStatusLabel1.Text = "Loaded Encounter: New";
             }
-            catch (Exception er)
+            catch (Exception estart)
             {
-                string msg = er.ToString();
+                MessageBox.Show(estart.Message);
             }
-            UpdateBudget();
-            CheckSearchParameters();
-            dataGridViewCreatures.Sort(dataGridViewCreatures.Columns[sortCol], ascending);
-            toolStripStatusLabel1.Text = "Loaded Encounter: New";
         }
 
         //private void TemporaryImport()
@@ -781,8 +796,6 @@ namespace PF2Easy
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Displays a SaveFileDialog so the user can save the Image
-            // assigned to Button2.
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "PF2E Encounter|*.PFSE";
             saveFileDialog1.Title = "Save a PF2E Encounter File";
