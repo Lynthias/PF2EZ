@@ -30,10 +30,27 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxSSize = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxSType = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxSAlign = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxSFamily = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDownSLevel = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxSLevel = new System.Windows.Forms.ComboBox();
+            this.textBoxSCreat = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridViewCreatures = new System.Windows.Forms.DataGridView();
@@ -42,45 +59,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelParty = new System.Windows.Forms.Label();
-            this.buttonRemove = new System.Windows.Forms.Button();
-            this.listBox_Encounter = new System.Windows.Forms.ListBox();
-            this.textBoxSCreat = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxSLevel = new System.Windows.Forms.ComboBox();
-            this.numericUpDownSLevel = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxSFamily = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxSAlign = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxSType = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBoxSSize = new System.Windows.Forms.TextBox();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBox_Encounter = new System.Windows.Forms.ListBox();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCreatures)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCreatures)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -112,35 +114,11 @@
             this.splitContainer1.SplitterDistance = 381;
             this.splitContainer1.TabIndex = 1;
             // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(660, 565);
-            this.webBrowser1.TabIndex = 0;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 565);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1045, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -169,6 +147,227 @@
             this.splitContainer2.Size = new System.Drawing.Size(381, 565);
             this.splitContainer2.SplitterDistance = 483;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(3, 48);
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(72, 20);
+            this.numericUpDown3.TabIndex = 29;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(91, 48);
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(73, 20);
+            this.numericUpDown2.TabIndex = 28;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.buttonClear);
+            this.panel2.Controls.Add(this.buttonSearch);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.textBoxSSize);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.textBoxSType);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.textBoxSAlign);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.textBoxSFamily);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.numericUpDownSLevel);
+            this.panel2.Controls.Add(this.comboBoxSLevel);
+            this.panel2.Controls.Add(this.textBoxSCreat);
+            this.panel2.Location = new System.Drawing.Point(8, 331);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(370, 120);
+            this.panel2.TabIndex = 27;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(104, 92);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 44;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(208, 92);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 43;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(310, 42);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(27, 13);
+            this.label9.TabIndex = 42;
+            this.label9.Text = "Size";
+            // 
+            // textBoxSSize
+            // 
+            this.textBoxSSize.Location = new System.Drawing.Point(289, 58);
+            this.textBoxSSize.Name = "textBoxSSize";
+            this.textBoxSSize.Size = new System.Drawing.Size(76, 20);
+            this.textBoxSSize.TabIndex = 41;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(225, 3);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "Type";
+            // 
+            // textBoxSType
+            // 
+            this.textBoxSType.Location = new System.Drawing.Point(207, 19);
+            this.textBoxSType.Name = "textBoxSType";
+            this.textBoxSType.Size = new System.Drawing.Size(76, 20);
+            this.textBoxSType.TabIndex = 39;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(303, 3);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Alignment";
+            // 
+            // textBoxSAlign
+            // 
+            this.textBoxSAlign.Location = new System.Drawing.Point(289, 19);
+            this.textBoxSAlign.Name = "textBoxSAlign";
+            this.textBoxSAlign.Size = new System.Drawing.Size(76, 20);
+            this.textBoxSAlign.TabIndex = 37;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 42);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 36;
+            this.label6.Text = "Creature";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(143, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Family";
+            // 
+            // textBoxSFamily
+            // 
+            this.textBoxSFamily.Location = new System.Drawing.Point(125, 18);
+            this.textBoxSFamily.Name = "textBoxSFamily";
+            this.textBoxSFamily.Size = new System.Drawing.Size(76, 20);
+            this.textBoxSFamily.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(41, 1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Level";
+            // 
+            // numericUpDownSLevel
+            // 
+            this.numericUpDownSLevel.Location = new System.Drawing.Point(62, 18);
+            this.numericUpDownSLevel.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.numericUpDownSLevel.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownSLevel.Name = "numericUpDownSLevel";
+            this.numericUpDownSLevel.Size = new System.Drawing.Size(57, 20);
+            this.numericUpDownSLevel.TabIndex = 32;
+            // 
+            // comboBoxSLevel
+            // 
+            this.comboBoxSLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSLevel.FormattingEnabled = true;
+            this.comboBoxSLevel.Items.AddRange(new object[] {
+            "=",
+            "<",
+            ">",
+            "<=",
+            ">=",
+            "~"});
+            this.comboBoxSLevel.Location = new System.Drawing.Point(5, 17);
+            this.comboBoxSLevel.Name = "comboBoxSLevel";
+            this.comboBoxSLevel.Size = new System.Drawing.Size(51, 21);
+            this.comboBoxSLevel.TabIndex = 31;
+            // 
+            // textBoxSCreat
+            // 
+            this.textBoxSCreat.Location = new System.Drawing.Point(5, 58);
+            this.textBoxSCreat.Name = "textBoxSCreat";
+            this.textBoxSCreat.Size = new System.Drawing.Size(278, 20);
+            this.textBoxSCreat.TabIndex = 26;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(151, 312);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Search Parameters";
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(8, 457);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemove.TabIndex = 25;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // label2
             // 
@@ -201,6 +400,7 @@
             this.dataGridViewCreatures.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewCreatures.Size = new System.Drawing.Size(370, 222);
             this.dataGridViewCreatures.TabIndex = 21;
+            this.dataGridViewCreatures.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCreatures_ColumnHeaderMouseClick);
             this.dataGridViewCreatures.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCreatures_RowEnter);
             // 
             // textBoxBudget
@@ -256,136 +456,6 @@
             this.labelParty.TabIndex = 16;
             this.labelParty.Text = "Average Level";
             // 
-            // buttonRemove
-            // 
-            this.buttonRemove.Location = new System.Drawing.Point(8, 457);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemove.TabIndex = 25;
-            this.buttonRemove.Text = "Remove";
-            this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
-            // 
-            // listBox_Encounter
-            // 
-            this.listBox_Encounter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox_Encounter.FormattingEnabled = true;
-            this.listBox_Encounter.Location = new System.Drawing.Point(0, 0);
-            this.listBox_Encounter.Margin = new System.Windows.Forms.Padding(2000);
-            this.listBox_Encounter.Name = "listBox_Encounter";
-            this.listBox_Encounter.Size = new System.Drawing.Size(381, 78);
-            this.listBox_Encounter.TabIndex = 24;
-            this.listBox_Encounter.SelectedIndexChanged += new System.EventHandler(this.listBox_Encounter_SelectedIndexChanged_1);
-            // 
-            // textBoxSCreat
-            // 
-            this.textBoxSCreat.Location = new System.Drawing.Point(5, 58);
-            this.textBoxSCreat.Name = "textBoxSCreat";
-            this.textBoxSCreat.Size = new System.Drawing.Size(278, 20);
-            this.textBoxSCreat.TabIndex = 26;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.buttonClear);
-            this.panel2.Controls.Add(this.buttonSearch);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.textBoxSSize);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.textBoxSType);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.textBoxSAlign);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.textBoxSFamily);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.numericUpDownSLevel);
-            this.panel2.Controls.Add(this.comboBoxSLevel);
-            this.panel2.Controls.Add(this.textBoxSCreat);
-            this.panel2.Location = new System.Drawing.Point(8, 331);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(370, 120);
-            this.panel2.TabIndex = 27;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(151, 312);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 13);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Search Parameters";
-            // 
-            // comboBoxSLevel
-            // 
-            this.comboBoxSLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSLevel.FormattingEnabled = true;
-            this.comboBoxSLevel.Items.AddRange(new object[] {
-            "=",
-            "<",
-            ">",
-            "<=",
-            ">=",
-            "~"});
-            this.comboBoxSLevel.Location = new System.Drawing.Point(5, 17);
-            this.comboBoxSLevel.Name = "comboBoxSLevel";
-            this.comboBoxSLevel.Size = new System.Drawing.Size(51, 21);
-            this.comboBoxSLevel.TabIndex = 31;
-            // 
-            // numericUpDownSLevel
-            // 
-            this.numericUpDownSLevel.Location = new System.Drawing.Point(62, 18);
-            this.numericUpDownSLevel.Maximum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.numericUpDownSLevel.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDownSLevel.Name = "numericUpDownSLevel";
-            this.numericUpDownSLevel.Size = new System.Drawing.Size(57, 20);
-            this.numericUpDownSLevel.TabIndex = 32;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(91, 48);
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(73, 20);
-            this.numericUpDown2.TabIndex = 28;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Location = new System.Drawing.Point(3, 48);
-            this.numericUpDown3.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(72, 20);
-            this.numericUpDown3.TabIndex = 29;
-            this.numericUpDown3.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -399,111 +469,62 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // label4
+            // saveToolStripMenuItem
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 1);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Level";
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // textBoxSFamily
+            // loadToolStripMenuItem
             // 
-            this.textBoxSFamily.Location = new System.Drawing.Point(125, 18);
-            this.textBoxSFamily.Name = "textBoxSFamily";
-            this.textBoxSFamily.Size = new System.Drawing.Size(76, 20);
-            this.textBoxSFamily.TabIndex = 34;
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
-            // label5
+            // listBox_Encounter
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(143, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "Family";
+            this.listBox_Encounter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox_Encounter.FormattingEnabled = true;
+            this.listBox_Encounter.Location = new System.Drawing.Point(0, 0);
+            this.listBox_Encounter.Margin = new System.Windows.Forms.Padding(2000);
+            this.listBox_Encounter.Name = "listBox_Encounter";
+            this.listBox_Encounter.Size = new System.Drawing.Size(381, 78);
+            this.listBox_Encounter.TabIndex = 24;
+            this.listBox_Encounter.SelectedIndexChanged += new System.EventHandler(this.listBox_Encounter_SelectedIndexChanged_1);
             // 
-            // label6
+            // webBrowser1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 42);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 36;
-            this.label6.Text = "Creature";
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(660, 565);
+            this.webBrowser1.TabIndex = 0;
             // 
-            // label7
+            // statusStrip1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(303, 3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Alignment";
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 565);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1045, 22);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // textBoxSAlign
+            // toolStripStatusLabel1
             // 
-            this.textBoxSAlign.Location = new System.Drawing.Point(289, 19);
-            this.textBoxSAlign.Name = "textBoxSAlign";
-            this.textBoxSAlign.Size = new System.Drawing.Size(76, 20);
-            this.textBoxSAlign.TabIndex = 37;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(225, 3);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 13);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "Type";
-            // 
-            // textBoxSType
-            // 
-            this.textBoxSType.Location = new System.Drawing.Point(207, 19);
-            this.textBoxSType.Name = "textBoxSType";
-            this.textBoxSType.Size = new System.Drawing.Size(76, 20);
-            this.textBoxSType.TabIndex = 39;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(310, 42);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(27, 13);
-            this.label9.TabIndex = 42;
-            this.label9.Text = "Size";
-            // 
-            // textBoxSSize
-            // 
-            this.textBoxSSize.Location = new System.Drawing.Point(289, 58);
-            this.textBoxSSize.Name = "textBoxSSize";
-            this.textBoxSSize.Size = new System.Drawing.Size(76, 20);
-            this.textBoxSSize.TabIndex = 41;
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(208, 92);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 43;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(104, 92);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(75, 23);
-            this.buttonClear.TabIndex = 44;
-            this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // Form1
             // 
@@ -513,28 +534,28 @@
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "PF2EZ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCreatures)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCreatures)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -578,6 +599,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxSAlign;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
     }
 }
 
