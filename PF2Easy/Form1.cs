@@ -27,6 +27,8 @@ namespace PF2Easy
         int party = 4;
         int difficultyIndex = 0;
 
+        int initialheight = 0;
+
         ListSortDirection ascending = ListSortDirection.Descending;
         //int selectedXPVal = 0;
 
@@ -39,12 +41,18 @@ namespace PF2Easy
             {
                 InitializeComponent();
                 PopulateDataGrid(false);
+
                 InitializeStuff();
             }
             catch(Exception estart)
             {
                 MessageBox.Show(estart.Message);
             }
+        }
+
+        private void InitializeScaling()
+        {
+            initialheight = panelFlow.Location.Y;
         }
 
         private void InitializeStuff()
@@ -189,11 +197,19 @@ namespace PF2Easy
             }
 
             budget = (newBudget - spent);
-
+            textBoxValue.Text = spent.ToString();
             if (threat != -1)
+            {
                 textBoxBudget.Text = budget.ToString();
+                textBoxValue.Text = spent.ToString();
+
+            }
             else
+            {
                 textBoxBudget.Text = "infinite";
+                textBoxValue.Text = spent.ToString();
+
+            }
 
         }
 
@@ -583,14 +599,23 @@ namespace PF2Easy
                     spent -= 160;
                 }
                 textBoxBudget.Text = budget.ToString();
+                textBoxValue.Text = spent.ToString();
+
             }
             else
             {
                 textBoxBudget.Text = "infinite";
+                textBoxValue.Text = spent.ToString();
+
             }
         }
 
         private void button1_Click(object sender, EventArgs e)//Add to Encounter
+        {
+            AddCreature();
+        }
+
+        private void AddCreature()
         {
             try
             {
@@ -664,9 +689,17 @@ namespace PF2Easy
                         listBox_Encounter.Items.Add(dupe.NAME + " x" + dupe.COUNT);
                     }
                     if (threat != -1)
+                    {
                         textBoxBudget.Text = budget.ToString();
+                        textBoxValue.Text = spent.ToString();
+
+                    }
                     else
+                    {
                         textBoxBudget.Text = "infinite";
+                        textBoxValue.Text = spent.ToString();
+
+                    }
                     CheckSearchParameters();
                     dataGridViewCreatures.Sort(dataGridViewCreatures.Columns[sortCol], ascending);
 
@@ -684,6 +717,11 @@ namespace PF2Easy
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            RemoveCreature();
+        }
+
+        private void RemoveCreature()
         {
             int selectedItemIndex = listBox_Encounter.SelectedIndex;
             int index = 0;
@@ -913,6 +951,8 @@ namespace PF2Easy
                             reader.Close();
                         }
                         textBoxBudget.Text = budget.ToString();
+                        textBoxValue.Text = spent.ToString();
+
                         comboBox1.SelectedIndex = difficultyIndex;
                         numericUpDown2.Value = avglevel;
                         numericUpDown3.Value = party;
@@ -931,6 +971,56 @@ namespace PF2Easy
                     MessageBox.Show("Failed to load file :(");
                 }
             }
+        }
+
+        private void dataGridViewCreatures_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AddCreature();
+        }
+
+        private void listBox_Encounter_DoubleClick(object sender, EventArgs e)
+        {
+            RemoveCreature();
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            if (encounter.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Reset the encounter?\n Warning: This will clear all selected creatures!", "Confirmation", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    avglevel = (int)numericUpDown2.Value;
+                    InitializeStuff();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+            else
+            {
+                avglevel = (int)numericUpDown2.Value;
+                budget = 0;
+                UpdateBudget();
+                CheckSearchParameters();
+                dataGridViewCreatures.Sort(dataGridViewCreatures.Columns[sortCol], ascending);
+
+            }
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            dataGridViewCreatures.Width = splitContainer1.Panel1.Width - 15;
+        }
+
+        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            Point p = panelFlow.Location;
+            p.Y = (splitContainer2.Panel1.Location.Y + splitContainer2.Panel1.Height) - panelFlow.Height;
+            panelFlow.Location = p;
+
+            dataGridViewCreatures.Height = p.Y - 75;
         }
     }
     [Serializable]
