@@ -44,7 +44,7 @@ namespace PF2Easy
 
                 InitializeStuff();
             }
-            catch(Exception estart)
+            catch (Exception estart)
             {
                 MessageBox.Show(estart.Message);
             }
@@ -60,6 +60,7 @@ namespace PF2Easy
             try
             {
 
+                dataGridViewCreatures.Font = new Font("Tahoma", 8.25f);
                 budget = 0;
                 spent = 0;
                 avglevel = (int)numericUpDown2.Value;
@@ -303,6 +304,7 @@ namespace PF2Easy
                 {
                     avglevel = (int)numericUpDown2.Value;
                     InitializeStuff();
+                    toolStripStatusLabel1.Text = "Loaded Encounter: New";
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -363,6 +365,11 @@ namespace PF2Easy
 
         private void button2_Click(object sender, EventArgs e)//Search
         {
+            SearchCreatures();
+        }
+
+        private void SearchCreatures()
+        {
             dataGridViewCreatures.Rows.Clear();
             SqliteConnection sqlite_conn;
             string OptionalQuery = "";
@@ -387,29 +394,52 @@ namespace PF2Easy
             {
                 OptionalQuery += " AND Type LIKE '%" + textBoxSType.Text + "%'";
             }
+            if (comboBoxSLevel.Text != " ")
+            {
+                OptionalQuery += " AND Level " + comboBoxSLevel.Text + " " + numericUpDownSLevel.Value;
+            }
+            if (checkBoxAffordable.Checked)
+            {
+
+            }
 
 
             sqlite_conn = new SqliteConnection(@"Data Source=.\DB\Monsters.db;");
-
+            //add WHERE LEVEL [operation] 
             sqlite_conn.Open();
-            SqliteCommand comm = new SqliteCommand("Select * From MASTER_MONSTERS where Level " + comboBoxSLevel.Text + " " + numericUpDownSLevel.Value + OptionalQuery + limiter + ";", sqlite_conn);
+            SqliteCommand comm = new SqliteCommand("Select * From MASTER_MONSTERS " + OptionalQuery + limiter + ";", sqlite_conn);
             using (SqliteDataReader read = comm.ExecuteReader())
             {
                 while (read.Read())
                 {
-                    dataGridViewCreatures.Rows.Add(new object[] {
-            //read.GetValue(0),  // U can use column index
-            read.GetValue(read.GetOrdinal("Name")),  // Or column name like this
-            read.GetValue(read.GetOrdinal("Family")),
-            read.GetValue(read.GetOrdinal("Level")),
-            read.GetValue(read.GetOrdinal("Alignment")),
-            read.GetValue(read.GetOrdinal("Type")),
-            read.GetValue(read.GetOrdinal("Size")),
-                    read.GetValue(read.GetOrdinal("URL"))
+                    Creature temp = new Creature();
+                    temp.NAME = read.GetValue(read.GetOrdinal("Name")).ToString();  // Or column name like this
+                    temp.FAMILY = read.GetValue(read.GetOrdinal("Family")).ToString();
+                    temp.LEVEL = Int32.Parse(read.GetValue(read.GetOrdinal("Level")).ToString());
+                    temp.ALIGNMENT = read.GetValue(read.GetOrdinal("Alignment")).ToString();
+                    temp.TYPE = read.GetValue(read.GetOrdinal("Type")).ToString();
+                    temp.SIZE = read.GetValue(read.GetOrdinal("Size")).ToString();
+                    temp.URL = read.GetValue(read.GetOrdinal("URL")).ToString();
+
+                    if (checkBoxAffordable.Checked)
+                    {
+                        if (CalculateDifficulty(temp, true))
+                        {
+                            dataGridViewCreatures.Rows.Add(new object[] {
+            temp.NAME,temp.FAMILY,temp.LEVEL,temp.ALIGNMENT,temp.TYPE,temp.SIZE,temp.URL
             });
+                        }
+                    }
+                    else
+                    {
+                        dataGridViewCreatures.Rows.Add(new object[] {
+            temp.NAME,temp.FAMILY,temp.LEVEL,temp.ALIGNMENT,temp.TYPE,temp.SIZE,temp.URL
+            });
+                    }
                 }
             }
             sqlite_conn.Close();
+            dataGridViewCreatures.Sort(dataGridViewCreatures.Columns[sortCol], ascending);
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -428,7 +458,8 @@ namespace PF2Easy
         {
             if (threat == -1) //allow any if custom
             {
-                return true;
+                //return true;
+                budget += 50000;
             }
             int scalar = c.LEVEL - avglevel;
             if (scalar > 4)
@@ -445,6 +476,8 @@ namespace PF2Easy
                         budget -= 10;
                         spent += 10;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
             }
@@ -457,6 +490,8 @@ namespace PF2Easy
                         budget -= 15;
                         spent += 15;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
             }
@@ -469,6 +504,8 @@ namespace PF2Easy
                         budget -= 20;
                         spent += 20;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
             }
@@ -481,6 +518,8 @@ namespace PF2Easy
                         budget -= 30;
                         spent += 30;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
             }
@@ -493,6 +532,8 @@ namespace PF2Easy
                         budget -= 40;
                         spent += 40;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
             }
@@ -505,6 +546,8 @@ namespace PF2Easy
                         budget -= 60;
                         spent += 60;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
             }
@@ -517,6 +560,8 @@ namespace PF2Easy
                         budget -= 80;
                         spent += 80;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
             }
@@ -529,6 +574,8 @@ namespace PF2Easy
                         budget -= 120;
                         spent += 120;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
             }
@@ -541,73 +588,92 @@ namespace PF2Easy
                         budget -= 160;
                         spent += 160;
                     }
+                    if (threat == -1)
+                        budget -= 50000;
                     return true;
                 }
+            }
+            else if (scalar > 4 && threat == -1)
+            {
+                float tempScalar = scalar;
+                if (budget >= 160 + 60 * ((int)tempScalar / 2))
+                {
+
+                    budget -= 160 + 60 * ((int)tempScalar / 2);
+                    spent += 160 + 60 * ((int)tempScalar / 2);
+                }
+                if (threat == -1)
+                    budget -= 50000;
+                return true;
             }
             return false;
         }
 
         private void Refund(Creature c)
         {
-            if (threat != -1) //allow any if custom
-            {
-                int scalar = c.LEVEL - avglevel;
+            int scalar = c.LEVEL - avglevel;
 
-                if (scalar == -4)
-                {
-                    budget += 10;
-                    spent -= 10;
-                }
-                else if (scalar == -3)
-                {
-                    budget += 15;
-                    spent -= 15;
-                }
-                else if (scalar == -2)
-                {
-                    budget += 20;
-                    spent -= 20;
-                }
-                else if (scalar == -1)
-                {
-                    budget += 30;
-                    spent -= 30;
-                }
-                else if (scalar == 0)
-                {
-                    budget += 40;
-                    spent -= 40;
-                }
-                else if (scalar == 1)
-                {
-                    budget += 60;
-                    spent -= 60;
-                }
-                else if (scalar == 2)
-                {
-                    budget += 80;
-                    spent -= 80;
-                }
-                else if (scalar == 3)
-                {
-                    budget += 120;
-                    spent -= 120;
-                }
-                else if (scalar == 4)
-                {
-                    budget += 160;
-                    spent -= 160;
-                }
-                textBoxBudget.Text = budget.ToString();
-                textBoxValue.Text = spent.ToString();
+            if (scalar == -4)
+            {
+                budget += 10;
+                spent -= 10;
+            }
+            else if (scalar == -3)
+            {
+                budget += 15;
+                spent -= 15;
+            }
+            else if (scalar == -2)
+            {
+                budget += 20;
+                spent -= 20;
+            }
+            else if (scalar == -1)
+            {
+                budget += 30;
+                spent -= 30;
+            }
+            else if (scalar == 0)
+            {
+                budget += 40;
+                spent -= 40;
+            }
+            else if (scalar == 1)
+            {
+                budget += 60;
+                spent -= 60;
+            }
+            else if (scalar == 2)
+            {
+                budget += 80;
+                spent -= 80;
+            }
+            else if (scalar == 3)
+            {
+                budget += 120;
+                spent -= 120;
+            }
+            else if (scalar == 4)
+            {
+                budget += 160;
+                spent -= 160;
+            }
+            else if (scalar > 4)
+            {
+                float tempScalar = scalar;
+                budget += 160 + 60 * ((int)tempScalar / 2);
+                spent -= 160 + 60 * ((int)tempScalar / 2);
 
             }
-            else
+            textBoxBudget.Text = budget.ToString();
+            textBoxValue.Text = spent.ToString();
+
+            if (threat == -1)
             {
                 textBoxBudget.Text = "infinite";
                 textBoxValue.Text = spent.ToString();
-
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)//Add to Encounter
@@ -842,6 +908,7 @@ namespace PF2Easy
             // If the file name is not an empty string open it for saving.
             if (saveFileDialog1.FileName != "")
             {
+                toolStripStatusLabel1.Text = "Loaded Encounter: " + Path.GetFileName(saveFileDialog1.FileName);
                 using (BinaryWriter binWriter =
                     new BinaryWriter(saveFileDialog1.OpenFile()))
                 {
@@ -905,6 +972,8 @@ namespace PF2Easy
                 {
                     if (File.Exists(encFile.FileName))
                     {
+                        toolStripStatusLabel1.Text = "Loaded Encounter: " + Path.GetFileName(encFile.FileName);
+
                         List<Creature> loadEnc = new List<Creature>();
                         List<Dupes> loadDupes = new List<Dupes>();
                         List<int> dupesIndexSizes = new List<int>();
@@ -992,10 +1061,11 @@ namespace PF2Easy
                 {
                     avglevel = (int)numericUpDown2.Value;
                     InitializeStuff();
+                    toolStripStatusLabel1.Text = "Loaded Encounter: New";
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    //do something else
+                    //do something else? meh
                 }
             }
             else
@@ -1021,6 +1091,11 @@ namespace PF2Easy
             panelFlow.Location = p;
 
             dataGridViewCreatures.Height = p.Y - 75;
+        }
+
+        private void checkBoxAffordable_CheckedChanged(object sender, EventArgs e)
+        {
+            SearchCreatures();
         }
     }
     [Serializable]
