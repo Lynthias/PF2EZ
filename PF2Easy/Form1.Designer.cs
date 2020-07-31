@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -110,12 +111,13 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Panel1.ForeColor = System.Drawing.SystemColors.GradientInactiveCaption;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
             this.splitContainer1.Size = new System.Drawing.Size(1045, 565);
-            this.splitContainer1.SplitterDistance = 381;
+            this.splitContainer1.SplitterDistance = 386;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
@@ -128,6 +130,7 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.splitContainer2.Panel1.Controls.Add(this.panelFlow);
             this.splitContainer2.Panel1.Controls.Add(this.label10);
             this.splitContainer2.Panel1.Controls.Add(this.textBoxValue);
@@ -141,18 +144,20 @@
             this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel1.Controls.Add(this.labelParty);
             this.splitContainer2.Panel1.Controls.Add(this.menuStrip1);
+            this.splitContainer2.Panel1.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.listBox_Encounter);
-            this.splitContainer2.Size = new System.Drawing.Size(381, 565);
-            this.splitContainer2.SplitterDistance = 483;
+            this.splitContainer2.Size = new System.Drawing.Size(386, 565);
+            this.splitContainer2.SplitterDistance = 516;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer2_SplitterMoved);
             // 
             // numericUpDown3
             // 
+            this.numericUpDown3.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.numericUpDown3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown3.Location = new System.Drawing.Point(3, 48);
             this.numericUpDown3.Minimum = new decimal(new int[] {
@@ -172,6 +177,7 @@
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.numericUpDown2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown2.Location = new System.Drawing.Point(91, 48);
             this.numericUpDown2.Minimum = new decimal(new int[] {
@@ -191,7 +197,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.checkBoxAffordable);
             this.panel2.Controls.Add(this.buttonClear);
@@ -209,6 +215,7 @@
             this.panel2.Controls.Add(this.numericUpDownSLevel);
             this.panel2.Controls.Add(this.comboBoxSLevel);
             this.panel2.Controls.Add(this.textBoxSCreat);
+            this.panel2.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel2.Location = new System.Drawing.Point(1, 29);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(372, 120);
@@ -250,6 +257,7 @@
             // 
             // textBoxSSize
             // 
+            this.textBoxSSize.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBoxSSize.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSSize.Location = new System.Drawing.Point(289, 61);
             this.textBoxSSize.Name = "textBoxSSize";
@@ -268,6 +276,7 @@
             // 
             // textBoxSType
             // 
+            this.textBoxSType.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBoxSType.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSType.Location = new System.Drawing.Point(207, 22);
             this.textBoxSType.Name = "textBoxSType";
@@ -286,6 +295,7 @@
             // 
             // textBoxSAlign
             // 
+            this.textBoxSAlign.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBoxSAlign.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSAlign.Location = new System.Drawing.Point(289, 22);
             this.textBoxSAlign.Name = "textBoxSAlign";
@@ -314,6 +324,7 @@
             // 
             // textBoxSFamily
             // 
+            this.textBoxSFamily.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBoxSFamily.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSFamily.Location = new System.Drawing.Point(125, 22);
             this.textBoxSFamily.Name = "textBoxSFamily";
@@ -332,6 +343,7 @@
             // 
             // numericUpDownSLevel
             // 
+            this.numericUpDownSLevel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.numericUpDownSLevel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownSLevel.Location = new System.Drawing.Point(62, 23);
             this.numericUpDownSLevel.Maximum = new decimal(new int[] {
@@ -355,6 +367,7 @@
             // 
             // comboBoxSLevel
             // 
+            this.comboBoxSLevel.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.comboBoxSLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSLevel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSLevel.FormattingEnabled = true;
@@ -373,6 +386,7 @@
             // 
             // textBoxSCreat
             // 
+            this.textBoxSCreat.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBoxSCreat.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSCreat.Location = new System.Drawing.Point(5, 61);
             this.textBoxSCreat.Name = "textBoxSCreat";
@@ -383,7 +397,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label3.Location = new System.Drawing.Point(144, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
@@ -448,6 +462,7 @@
             // 
             // textBoxBudget
             // 
+            this.textBoxBudget.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBoxBudget.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBudget.Location = new System.Drawing.Point(327, 32);
             this.textBoxBudget.Name = "textBoxBudget";
@@ -479,6 +494,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
@@ -507,13 +523,13 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(381, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(386, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -522,12 +538,15 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
             this.loadToolStripMenuItem});
+            this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.saveToolStripMenuItem.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
@@ -535,6 +554,8 @@
             // 
             // loadToolStripMenuItem
             // 
+            this.loadToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.loadToolStripMenuItem.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadToolStripMenuItem.Text = "Load";
@@ -542,13 +563,14 @@
             // 
             // listBox_Encounter
             // 
+            this.listBox_Encounter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.listBox_Encounter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox_Encounter.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox_Encounter.FormattingEnabled = true;
             this.listBox_Encounter.Location = new System.Drawing.Point(0, 0);
             this.listBox_Encounter.Margin = new System.Windows.Forms.Padding(2000);
             this.listBox_Encounter.Name = "listBox_Encounter";
-            this.listBox_Encounter.Size = new System.Drawing.Size(381, 78);
+            this.listBox_Encounter.Size = new System.Drawing.Size(386, 45);
             this.listBox_Encounter.TabIndex = 17;
             this.listBox_Encounter.SelectedIndexChanged += new System.EventHandler(this.listBox_Encounter_SelectedIndexChanged_1);
             this.listBox_Encounter.DoubleClick += new System.EventHandler(this.listBox_Encounter_DoubleClick);
@@ -559,11 +581,12 @@
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(660, 565);
+            this.webBrowser1.Size = new System.Drawing.Size(655, 565);
             this.webBrowser1.TabIndex = 0;
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.statusStrip1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
@@ -575,6 +598,8 @@
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(123, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
@@ -593,6 +618,7 @@
             // 
             // textBoxValue
             // 
+            this.textBoxValue.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBoxValue.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxValue.Location = new System.Drawing.Point(271, 32);
             this.textBoxValue.Name = "textBoxValue";
@@ -614,12 +640,13 @@
             // 
             // panelFlow
             // 
-            this.panelFlow.BackColor = System.Drawing.SystemColors.Desktop;
+            this.panelFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panelFlow.Controls.Add(this.buttonReset);
             this.panelFlow.Controls.Add(this.buttonRemove);
             this.panelFlow.Controls.Add(this.panel2);
             this.panelFlow.Controls.Add(this.button1);
             this.panelFlow.Controls.Add(this.label3);
+            this.panelFlow.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panelFlow.Location = new System.Drawing.Point(8, 302);
             this.panelFlow.Name = "panelFlow";
             this.panelFlow.Size = new System.Drawing.Size(370, 178);
@@ -641,9 +668,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1045, 587);
             this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "PF2EZ";

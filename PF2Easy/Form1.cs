@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,7 +42,6 @@ namespace PF2Easy
             {
                 InitializeComponent();
                 PopulateDataGrid(false);
-
                 InitializeStuff();
             }
             catch (Exception estart)
@@ -59,7 +59,9 @@ namespace PF2Easy
         {
             try
             {
-
+                dataGridViewCreatures.BackgroundColor = Color.FromArgb(255, 64, 64, 64);
+                dataGridViewCreatures.ForeColor = Color.Black;
+                dataGridViewCreatures.EnableHeadersVisualStyles = false;
                 dataGridViewCreatures.Font = new Font("Tahoma", 8.25f);
                 budget = 0;
                 spent = 0;
@@ -156,6 +158,7 @@ namespace PF2Easy
             SqliteCommand comm = new SqliteCommand("Select * From MASTER_MONSTERS", sqlite_conn);
             using (SqliteDataReader read = comm.ExecuteReader())
             {
+                int i = 0;
                 while (read.Read())
                 {
                     dataGridViewCreatures.Rows.Add(new object[] {
@@ -168,6 +171,10 @@ namespace PF2Easy
             read.GetValue(read.GetOrdinal("Size")),
                     read.GetValue(read.GetOrdinal("URL"))
             });
+                    dataGridViewCreatures.Rows[i].DefaultCellStyle.BackColor = Color.DarkGray;
+                    dataGridViewCreatures.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+                    //dataGridViewCreatures.Rows[i].style = Color.DarkGray;
+                    i++;
                 }
             }
             sqlite_conn.Close();
@@ -339,6 +346,7 @@ namespace PF2Easy
             SqliteCommand comm = new SqliteCommand("Select * From MASTER_MONSTERS", sqlite_conn);
             using (SqliteDataReader read = comm.ExecuteReader())
             {
+                int i = 0;
                 while (read.Read())
                 {
                     Creature temp = new Creature();
@@ -357,6 +365,9 @@ namespace PF2Easy
             //read.GetValue(0),  // U can use column index
             temp.NAME,temp.FAMILY,temp.LEVEL,temp.ALIGNMENT,temp.TYPE,temp.SIZE,temp.URL
             });
+                        dataGridViewCreatures.Rows[i].DefaultCellStyle.BackColor = Color.DarkGray;
+                        dataGridViewCreatures.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+                        i++;
                     }
                 }
             }
@@ -373,43 +384,65 @@ namespace PF2Easy
             dataGridViewCreatures.Rows.Clear();
             SqliteConnection sqlite_conn;
             string OptionalQuery = "";
-
+            int count = 0;
             if (textBoxSFamily.Text != "")
             {
-                OptionalQuery += " AND Family LIKE '%" + textBoxSFamily.Text + "%'";
+                count++;
+                if (count == 0)
+                    OptionalQuery += " Family LIKE '%" + textBoxSFamily.Text + "%'";
+                else
+                    OptionalQuery += " AND Family LIKE '%" + textBoxSFamily.Text + "%'";
+
             }
             if (textBoxSCreat.Text != "")
             {
-                OptionalQuery += " AND Name LIKE '%" + textBoxSCreat.Text + "%'";
+                count++;
+                if (count == 0)
+                    OptionalQuery += " AND Name LIKE '%" + textBoxSCreat.Text + "%'";
+                else
+                    OptionalQuery += " Name LIKE '%" + textBoxSCreat.Text + "%'";
             }
             if (textBoxSAlign.Text != "")
             {
-                OptionalQuery += " AND Alignment LIKE '%" + textBoxSAlign.Text + "%'";
+                count++;
+                if (count == 0)
+                    OptionalQuery += " AND Alignment LIKE '%" + textBoxSAlign.Text + "%'";
+                else
+                    OptionalQuery += " Alignment LIKE '%" + textBoxSAlign.Text + "%'";
+
             }
             if (textBoxSSize.Text != "")
             {
-                OptionalQuery += " AND Size LIKE '%" + textBoxSSize.Text + "%'";
+                count++;
+                if (count == 0)
+                    OptionalQuery += " AND Size LIKE '%" + textBoxSSize.Text + "%'";
+                else
+                    OptionalQuery += " Size LIKE '%" + textBoxSSize.Text + "%'";
             }
             if (textBoxSType.Text != "")
             {
-                OptionalQuery += " AND Type LIKE '%" + textBoxSType.Text + "%'";
+                count++;
+                if (count == 0)
+                    OptionalQuery += " AND Type LIKE '%" + textBoxSType.Text + "%'";
+                else
+                    OptionalQuery += " Type LIKE '%" + textBoxSType.Text + "%'";
             }
             if (comboBoxSLevel.Text != " ")
             {
-                OptionalQuery += " AND Level " + comboBoxSLevel.Text + " " + numericUpDownSLevel.Value;
+                count++;
+                if (count == 0)
+                    OptionalQuery += " AND Level " + comboBoxSLevel.Text + " " + numericUpDownSLevel.Value;
+                else
+                    OptionalQuery += " Level " + comboBoxSLevel.Text + " " + numericUpDownSLevel.Value;
             }
-            if (checkBoxAffordable.Checked)
-            {
-
-            }
-
 
             sqlite_conn = new SqliteConnection(@"Data Source=.\DB\Monsters.db;");
             //add WHERE LEVEL [operation] 
             sqlite_conn.Open();
-            SqliteCommand comm = new SqliteCommand("Select * From MASTER_MONSTERS " + OptionalQuery + limiter + ";", sqlite_conn);
+            SqliteCommand comm = new SqliteCommand("Select * From MASTER_MONSTERS WHERE" + OptionalQuery + limiter + ";", sqlite_conn);
             using (SqliteDataReader read = comm.ExecuteReader())
             {
+                int i = 0;
                 while (read.Read())
                 {
                     Creature temp = new Creature();
@@ -420,7 +453,6 @@ namespace PF2Easy
                     temp.TYPE = read.GetValue(read.GetOrdinal("Type")).ToString();
                     temp.SIZE = read.GetValue(read.GetOrdinal("Size")).ToString();
                     temp.URL = read.GetValue(read.GetOrdinal("URL")).ToString();
-
                     if (checkBoxAffordable.Checked)
                     {
                         if (CalculateDifficulty(temp, true))
@@ -428,6 +460,9 @@ namespace PF2Easy
                             dataGridViewCreatures.Rows.Add(new object[] {
             temp.NAME,temp.FAMILY,temp.LEVEL,temp.ALIGNMENT,temp.TYPE,temp.SIZE,temp.URL
             });
+                            dataGridViewCreatures.Rows[i].DefaultCellStyle.BackColor = Color.DarkGray;
+                            dataGridViewCreatures.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+                            i++;
                         }
                     }
                     else
@@ -435,6 +470,9 @@ namespace PF2Easy
                         dataGridViewCreatures.Rows.Add(new object[] {
             temp.NAME,temp.FAMILY,temp.LEVEL,temp.ALIGNMENT,temp.TYPE,temp.SIZE,temp.URL
             });
+                        dataGridViewCreatures.Rows[i].DefaultCellStyle.BackColor = Color.DarkGray;
+                        dataGridViewCreatures.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+                        i++;
                     }
                 }
             }
@@ -613,7 +651,7 @@ namespace PF2Easy
         {
             int scalar = c.LEVEL - avglevel;
 
-            if (scalar == -4)
+            if (scalar <= -4)
             {
                 budget += 10;
                 spent -= 10;
@@ -972,6 +1010,7 @@ namespace PF2Easy
                 {
                     if (File.Exists(encFile.FileName))
                     {
+                        InitializeStuff();
                         toolStripStatusLabel1.Text = "Loaded Encounter: " + Path.GetFileName(encFile.FileName);
 
                         List<Creature> loadEnc = new List<Creature>();
